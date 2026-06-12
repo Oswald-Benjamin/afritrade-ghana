@@ -132,7 +132,37 @@ Partner with an existing **licensed broker-dealer** initially (e.g., Databank, I
 
 ---
 
-## Architecture
+## Broker Partnership Roadmap
+
+Recommended approach: partner with an existing licensed dealer member while pursuing our own SEC licence in parallel (two-track strategy).
+
+### Recommended Partner Shortlist
+
+| Broker | Why | Contact Approach |
+|---|---|---|
+| **Databank Brokerage** | Already runs eStock digital platform; understands fintech partnerships | Direct approach via Databank Group CEO office |
+| **IC Securities** | Growing retail presence; IC Group backing; innovation-friendly | Approach via IC Securities MD |
+| **CalBank Brokerage** | Banking parent; MoMo settlement infrastructure | CalBank corporate development |
+
+### Phased Approach
+
+| Phase | Timeline | Activity |
+|---|---|---|
+| **Phase 1: Target Mapping** | Weeks 1–4 | Formalise shortlist of all SEC-registered dealer members; engage Ghanaian legal counsel; prepare partnership pitch deck |
+| **Phase 2: Negotiation** | Weeks 5–8 | Present technical architecture and MoMo integration plan; negotiate revenue share (suggest 60/40 in favour of technology partner); draft partnership agreement |
+| **Phase 3: Integration** | Weeks 9–12 | Integrate with partner broker's trading systems; configure mobile money payment rails; pilot with limited user group (50–100 beta testers) |
+
+## Data Feed Strategy
+
+GSE offers multiple data tiers. For V1.0.0:
+
+| Tier | Scope | Cost |
+|---|---|---|
+| **End of Day Index Data** | GSE Composite Index closing values | GHS 2,500/year |
+| **Individual Company EOD** | Listed company prices, financials, market cap | GHS 1,000/month (GHS 12,000/year) |
+| **Total V1.0.0 data budget** | Index + all listed companies | **~GHS 14,500/year (~USD 8,500)** |
+
+Real-time data (GHS 40,000/year) is deferred to V2. Actual broker partners may provide delayed data as part of the partnership arrangement — confirm during negotiation.
 
 ```
 ┌─────────────────────────────────────────────┐
@@ -186,7 +216,86 @@ See `.env.example` for all required keys.
 
 ---
 
+## Risk Analysis
+
+| Risk | Likelihood | Impact | Mitigation |
+|---|---|---|---|
+| **Regulatory delays** (SEC licence) | Medium | High | Two-track strategy: partner broker first, pursue own licence in parallel |
+| **MoMo API downtime** | Low | High | Multi-provider integration (MTN primary, Telecel V2); graceful error handling |
+| **Low user adoption** | Medium | High | Education-first onboarding; simulated trading mode; low minimums |
+| **Data feed cost overrun** | Low | Medium | Start with EOD data only; negotiate partner-provided data |
+| **Broker partner negotiation failure** | Medium | High | Three-broker shortlist; fallback to direct SEC licence application |
+| **Currency/inflation risk** | Medium | Low | GHS-denominated; transparent fee communication |
+
+## Estimated Capital Requirements (18 months, V1.0.0 + buffer)
+
+| Item | Cost (USD) |
+|---|---|
+| Legal & regulatory (Ghanaian counsel, SEC applications) | 15,000–25,000 |
+| Platform development (web app, backend, APIs) | 40,000–60,000 |
+| MoMo integration & testing | 8,000–12,000 |
+| GSE data feed (EOD, 18 months) | 10,000–15,000 |
+| Compliance infrastructure (KYC/AML, audit) | 10,000–15,000 |
+| Marketing & user acquisition | 15,000–25,000 |
+| Operational reserve | 20,000–30,000 |
+| **Total** | **118,000–182,000** |
+
+---
+
 ## Roadmap
+
+### V1.0.0 — Closed Beta (Target: September 1, 2026)
+
+**Scope: A real user can sign up, fund via MoMo, and place trades.**
+
+| # | Feature | Priority |
+|---|---|---|
+| 1 | User auth (signup, signin, session management) | P0 |
+| 2 | KYC gate (Ghana Card ID capture, manual review queue) | P0 |
+| 3 | GSE market data (EOD feed: index + listed company prices) | P0 |
+| 4 | MTN MoMo deposit (real API, request-to-pay flow) | P0 |
+| 5 | Buy market orders (execution logic, simulated settlement) | P0 |
+| 6 | Portfolio view (positions, cash balance, P&L) | P0 |
+| 7 | Transaction history | P0 |
+| 8 | Basic admin dashboard (user list, order ledger) | P0 |
+| 9 | Sell market orders | P1 |
+| 10 | Limit orders | P1 |
+| 11 | Price alerts (above/below, email notification) | P1 |
+| 12 | Market intelligence layer (company fundamentals, sector data) | P1 |
+
+**Explicitly NOT in V1.0.0:**
+- IPO subscriptions → V2
+- Fixed income (GoG bonds, T-bills) → V2
+- React Native mobile app → V2
+- Multi-exchange (Malawi, Nigeria, Kenya) → V2
+- Diaspora features (multi-currency, family accounts) → V2
+- Social features (watchlists, leaderboards) → V2
+- AI market summaries → V2
+- Shareholder voting platform → V2
+- Bilingual UI (Twi) → V2
+- Financial literacy hub → V2
+- Simulated trading mode → V2
+
+### V2.0.0 — Public Launch (Target: Q1 2027)
+
+- IPO subscription portal
+- Fixed income instruments
+- React Native mobile app (iOS + Android)
+- Bilingual UI (English + Twi)
+- Diaspora onboarding (GBP/USD corridors)
+- Financial literacy hub
+- Simulated trading mode
+- Social features
+
+### V3.0.0 — Pan-African (Target: Q3 2027)
+
+- Multi-exchange: Malawi MSE, Nigeria NGX, Kenya NSE
+- Currency conversion layer
+- Cross-border portfolio view
+- Shareholder voting platform
+- AI-powered market summaries
+
+---
 
 | Quarter | Milestone |
 |---|---|
